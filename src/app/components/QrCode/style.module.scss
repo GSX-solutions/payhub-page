@@ -1,0 +1,15 @@
+.qrCode {
+  :global {
+    .qr-code-container {
+      padding: 24px;
+      border-radius: 24px;
+      background-color: var(--color-white);
+      box-shadow: -8.457px -12.017px 12.757px 0px rgba(255, 255, 255, 0.38), -8.457px -15.576px 18.045px 0px rgba(255, 255, 255, 0.54), 12.686px 11.84px 16.069px 0px rgba(209, 217, 230, 0.40), 12.686px 22.835px 28.332px 0px rgba(209, 217, 230, 0.67);
+
+      //.qr-code-canvas {
+      //  width: 128px;
+      //  height: 128px;
+      //}
+    }
+  }
+}

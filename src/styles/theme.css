@@ -1,0 +1,14 @@
+:root {
+    --color-main: #2079FF;
+    --color-background: #ECF0F3;
+    --color-orange: #FF7D00;
+    --color-green: #18C156;
+    --color-red: #FF5C38;
+    --color-white: #FFFFFF;
+    --color-light: #FFFFFF;
+    --color-dark: #16161A;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {}
+}
