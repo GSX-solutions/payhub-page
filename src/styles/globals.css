@@ -86,16 +86,3 @@ body {
   box-shadow: -20px -28.418px 30.167px 0px rgba(255, 255, 255, 0.38) inset, -20px -31.364px 35.026px 0px rgba(255, 255, 255, 0.45) inset, -20px -36.834px 42.672px 0px rgba(255, 255, 255, 0.54) inset, 30px 54px 61px 0px rgba(209, 217, 230, 0.67) inset, 30px 35px 45px 0px rgba(209, 217, 230, 0.48) inset, 30px 28px 38px 0px rgba(209, 217, 230, 0.40) inset;
 }
 
-/* Prevent scrolling on the page */
-html,
-body {
-  overflow: hidden;
-  margin: 0; /* Remove any default margins */
-  height: 100%;
-}
-
-#__next {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
