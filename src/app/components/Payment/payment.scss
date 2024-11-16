@@ -751,7 +751,7 @@ img {
   justify-content: space-between; /* Ensure content and button spacing */
   width: 100%;
   max-width: 420px;
-  height: 85vh; /* Adjust height for better fit */
+  height: 75vh; /* Adjust height for better fit */
   background: #ffffff;
   border-radius: 16px 16px 0 0;
   padding: 1.5rem 1rem;
@@ -760,7 +760,7 @@ img {
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    height: 90vh; /* Adjust height for smaller devices */
+    height: 85vh; /* Adjust height for smaller devices */
   }
 }
 
@@ -776,7 +776,7 @@ img {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  margin-bottom: 2rem; /* Increased bottom margin for better spacing */
+  margin-bottom: 3rem; /* Increased bottom margin for better spacing */
 
   &:hover {
     background-color: #0056b3;
