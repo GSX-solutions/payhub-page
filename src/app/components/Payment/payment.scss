@@ -908,11 +908,25 @@ img {
 /* Adjustments for Mobile */
 @media (max-width: 576px) {
   .modal {
-    height: calc(83vh - 3rem); /* Dynamically adjust for small screens */
+    height: calc(88vh - 3rem); /* Dynamically adjust for small screens */
     padding: 1rem;
   }
 
   .proceed-button {
     margin-bottom: 3rem; /* Add extra bottom space for smaller devices */
+  }
+}
+/* Modal Content */
+.modal-content {
+  flex-grow: 1; /* Allow content to expand as needed */
+  overflow-y: scroll; /* Enable scrolling functionality */
+  padding: 0.5rem 0;
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
   }
 }
