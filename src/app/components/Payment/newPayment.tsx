@@ -270,10 +270,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
                   ) : null}
                 </div>
               ))}
-            </div>
-
-            {/* Proceed to Pay Button */}
-            <button
+              <button
               className="proceed-button"
               onClick={() => {
                 window.location.replace(selectedUrl);
@@ -282,6 +279,18 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
             >
               Proceed to Pay
             </button>
+            </div>
+
+            {/* Proceed to Pay Button */}
+            {/* <button
+              className="proceed-button"
+              onClick={() => {
+                window.location.replace(selectedUrl);
+                closeModal();
+              }}
+            >
+              Proceed to Pay
+            </button> */}
           </div>
         </div>
       )}
