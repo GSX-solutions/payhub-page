@@ -805,7 +805,7 @@ img {
   overflow: hidden;
 
   @media (max-width: 768px) {
-    height: calc(63vh - 3rem); /* Ensure height is responsive for mobile */
+    height: calc(73vh - 3rem); /* Ensure height is responsive for mobile */
   }
 }
 
@@ -908,11 +908,11 @@ img {
 /* Adjustments for Mobile */
 @media (max-width: 576px) {
   .modal {
-    height: calc(73vh - 3rem); /* Dynamically adjust for small screens */
+    height: calc(83vh - 3rem); /* Dynamically adjust for small screens */
     padding: 1rem;
   }
 
   .proceed-button {
-    margin-bottom: 1rem; /* Add extra bottom space for smaller devices */
+    margin-bottom: 3rem; /* Add extra bottom space for smaller devices */
   }
 }
