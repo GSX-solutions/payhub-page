@@ -99,69 +99,68 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
   }, [token]);
 
   useEffect(() => {
-    //if (!txId) return;
-  
-    const fetchData = async () => {
-      try {
-        const response = await checkPaymentTime(token, txId);
-  
-        if (response.responseCode !== 200 || !response.responseData) {
-          console.log("No valid time data received. Setting default 10-minute timer.");
-          setDefaultRemainingTime();
-          return;
-        }
-  
-        const transactionTime = moment.tz(response.responseData, "Asia/Kolkata");
-        const currentTime = moment();
-        const timeDifferenceInMinutes = transactionTime.diff(currentTime, "minutes");
-  
-        if (timeDifferenceInMinutes <= 15) {
-          const targetTime = transactionTime.add(15, "minutes").toDate().getTime();
-          startCountdown(targetTime);
-        } else {
-          console.log("Transaction time is invalid. Setting default 10-minute timer.");
-          setDefaultRemainingTime();
-        }
-      } catch (error) {
-        console.log("Error fetching time. Setting default 10-minute timer.", error);
-        setDefaultRemainingTime();
-      }
-    };
-  
-    const setDefaultRemainingTime = () => {
-      const defaultTargetTime = moment().add(10, "minutes").toDate().getTime();
-      startCountdown(defaultTargetTime);
-    };
-  
-    const startCountdown = (targetTime: number) => {
-      const calculateRemainingTime = () => {
-        const currentTime = new Date().getTime();
-        const timeDifferenceInSeconds = Math.floor((targetTime - currentTime) / 1000);
-  
-        if (timeDifferenceInSeconds > 0) {
-          const { minutes, seconds } = formatTime(timeDifferenceInSeconds);
-          setRemainingTime(
-            `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
+    if (!txId) return;
+    const fetchData = () => {
+      checkPaymentTime(token, txId)
+        .then((response) => {
+          if (response.responseCode !== 200) {
+            // Handle the case where responseCode is not 200
+            // navigate("/expired");
+            // return alert("Link Expired");
+          }
+
+          const responseData = response.responseData;
+          const transactionTime = moment.tz(responseData, "Asia/Kolkata");
+
+          const currentTime = moment();
+          const timeDifferenceInMinutes = transactionTime.diff(
+            currentTime,
+            "minutes"
           );
-        } else {
-          setRemainingTime("00:00");
-          onEndRef.current && onEndRef.current();
-          clearInterval(timer.current!);
-        }
-      };
-  
-      calculateRemainingTime();
-      if (timer.current) clearInterval(timer.current);
-      timer.current = setInterval(calculateRemainingTime, 1000);
+
+          if (timeDifferenceInMinutes <= 15) {
+            const targetTime = transactionTime
+              .add(15, "minutes")
+              .toDate()
+              .getTime();
+
+            const calculateRemainingTime = () => {
+              const currentTime = new Date().getTime();
+              const timeDifferenceInSeconds = Math.floor(
+                (targetTime - currentTime) / 1000
+              );
+
+              if (timeDifferenceInSeconds > 0) {
+                const { minutes, seconds } = formatTime(
+                  timeDifferenceInSeconds
+                );
+                setRemainingTime(
+                  `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
+                );
+              } else {
+                setRemainingTime("00:00");
+                onEndRef.current && onEndRef.current();
+              }
+            };
+
+            calculateRemainingTime();
+
+            if (timer.current) clearInterval(timer.current);
+            timer.current = setInterval(calculateRemainingTime, 1000);
+          }
+        })
+        .catch((error) => {
+          // Handle errors
+          console.log("error", error);
+        });
     };
-  
+
     fetchData();
-  
+
     return () => {
       clearInterval(timer.current);
     };
   }, [token, txId]);
-  
 
   const setSelected = (method: any) => {
     setSelectedUrl(method.url);
