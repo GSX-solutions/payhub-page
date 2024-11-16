@@ -5,7 +5,6 @@ import "@/styles/globals.css";
 import styles from "@/app/style.module.scss";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect } from "react";
 
 const hms = localFont({
   src: [
@@ -47,14 +46,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    // Dynamically set the height of the body to match the viewport
-    document.body.style.height = `${window.innerHeight}px`;
-  
-    return () => {
-      document.body.style.height = ""; // Reset on cleanup
-    };
-  }, []);
   
   return (
     <html lang="en">
