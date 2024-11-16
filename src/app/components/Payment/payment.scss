@@ -744,3 +744,63 @@ img {
 }
 
 
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: flex-end; /* Align modal to the bottom */
+}
+
+/* Modal Container */
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure content spacing */
+  width: 100%;
+  max-width: 420px;
+  height: 90vh; /* Allow for mobile screens with enough spacing */
+  background: #ffffff;
+  border-radius: 16px 16px 0 0;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Prevent overflow */
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    height: 95vh; /* Slight adjustment for smaller devices */
+  }
+}
+
+/* Modal Content */
+.modal-content {
+  flex: 1;
+  overflow-y: auto; /* Enable scrolling if content exceeds available space */
+  margin-bottom: 1.5rem;
+}
+
+/* Proceed Button */
+.proceed-button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem; /* Add spacing from bottom of the screen */
+  }
+}
