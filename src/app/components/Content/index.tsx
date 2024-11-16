@@ -9,6 +9,7 @@ import {
   checkPaymentStatus,
 } from "@/services/paymentController";
 import { useEffect } from "react";
+import NewPayment from "../Payment/newPayment";
 
 const DynamicQrCode = dynamic(() => import("@/app/components/QrCode"), {
   ssr: false,
@@ -69,16 +70,16 @@ function Content() {
 
   return (
     <>
-      <div className="flex flex-col gap-2 items-center">
-        <p className="text-[32px] font-bold tracking-[0.15px] sm:text-[40px]">{`₹ ${splitThousandSeparator(Number(amount))}`}</p>
-        <DynamicCountDown />
+      <div >
+        {/* <p className="text-[32px] font-bold tracking-[0.15px] sm:text-[40px]">{`₹ ${splitThousandSeparator(Number(amount))}`}</p> */}
+        {/* <DynamicCountDown /> */}
       </div>
 
-      <ShadowCard className="gap-4 py-6 sm:py-10">
+      {/* <ShadowCard className="gap-4 py-6 sm:py-10">
         <DynamicQrCode />
-      </ShadowCard>
+      </ShadowCard> */}
 
-      <Payment />
+     <NewPayment/>
     </>
   );
 }

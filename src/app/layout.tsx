@@ -51,13 +51,13 @@ export default function RootLayout({
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body className={hms.className}>
-        <main className="flex w-full min-h-screen flex-col items-center justify-center mx-auto">
-          <div className="flex flex-col w-full max-w-full h-screen sm:h-auto sm:w-[495px] sm:rounded-3xl main">
-            <Image src={"/images/header.svg"} alt={""} width={129} height={55} className="w-full sm:rounded-t-3xl" />
+      <body>
+        {/* <main className="flex w-full min-h-screen flex-col items-center justify-center mx-auto"> */}
+          {/* <div className="flex flex-col w-full max-w-full h-screen sm:h-auto sm:w-[495px] sm:rounded-3xl main"> */}
+            {/* <Image src={"/images/header.svg"} alt={""} width={129} height={55} className="w-full sm:rounded-t-3xl" /> */}
             <div className={styles.content}>{children}</div>
-          </div>
-        </main>
+          {/* </div> */}
+        {/* </main> */}
       </body>
     </html>
   );
