@@ -579,3 +579,174 @@
   }
 }
 
+/* Main container for the payment page */
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Distribute elements evenly */
+  background-color: #ffffff;
+  font-family: "Arial", sans-serif;
+
+  /* Use viewport height for both mobile and desktop */
+  height: 100vh; /* Always use the full viewport height */
+  max-width: 420px; /* Center for desktop */
+  margin: 0 auto; /* Center horizontally */
+  overflow: hidden; /* Prevent scrolling */
+
+  /* Adjust for desktop */
+  @media (min-width: 768px) {
+    height: 95vh; /* Slightly reduce height on desktop */
+    margin: 2rem auto; /* Add vertical margins */
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+}
+
+/* Payment header */
+.payment-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+
+  button {
+    position: absolute;
+    left: 1rem;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f9f9f9;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke: #1e1e1e;
+      stroke-width: 2px;
+    }
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e1e1e;
+  }
+}
+
+/* Payment Amount Section */
+.payment-amount {
+  text-align: center;
+
+  p {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1e1e1e;
+    margin: 0;
+  }
+
+  .payment-expiry {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px; /* Rounded pill shape */
+    display: inline-block;
+    font-weight: 500; /* Slightly bold expiry text */
+  }
+}
+
+/* Button Section */
+.payment-button {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 1rem auto;
+
+  button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+/* Footer Section */
+.payment-footer {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Modal Container */
+.modal {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 16px 16px 0 0;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  animation: slideUp 0.3s forwards;
+
+  &.fade-out {
+    animation: slideDown 0.3s forwards;
+  }
+}
+
+/* Animations for Modal */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
