@@ -47,6 +47,16 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
     { icon: "googlePay.svg", name: "googlePay", url: upiData.gpayurl },
     { icon: "otherUpi.svg", name: "otherUpi", url: upiData.upi },
   ]);
+  useEffect(() => {
+    const setVh = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    };
+
+    setVh(); // Initial set
+    window.addEventListener('resize', setVh); // Update on window resize
+
+    return () => window.removeEventListener('resize', setVh); // Cleanup
+  }, []);
 
   useEffect(() => {
     if (!token || !txId) return;
