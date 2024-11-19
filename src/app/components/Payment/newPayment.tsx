@@ -42,7 +42,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
     gpayurl: decodeURIComponent(gpay),
   };
   const [paymentMethods, setPaymentMethods] = useState([
-    { icon: "paytm.svg", name: "paytm", url: upiData.paytmurl, selected: true },
+    { icon: "paytm.svg", name: "paytm", url: upiData.paytmurl, selected: false },
     { icon: "phonepe.svg", name: "phonepe", url: upiData.phonepeurl },
     { icon: "googlePay.svg", name: "googlePay", url: upiData.gpayurl },
     { icon: "otherUpi.svg", name: "otherUpi", url: upiData.upi },
