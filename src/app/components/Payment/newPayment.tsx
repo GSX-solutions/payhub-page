@@ -43,10 +43,10 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
   };
   console.log(upiData)
   const [paymentMethods, setPaymentMethods] = useState([
-    { icon: "paytm.svg", name: "paytm", url: upiData.paytmurl, selected: false },
-    { icon: "phonepe.svg", name: "phonepe", url: upiData.phonepeurl },
-    { icon: "googlePay.svg", name: "googlePay", url: upiData.gpayurl },
-    { icon: "otherUpi.svg", name: "otherUpi", url: upiData.upi },
+    { icon: "paytm.svg", name: "PayTM", url: upiData.paytmurl, selected: false },
+    { icon: "phonepe.svg", name: "PhonePE", url: upiData.phonepeurl },
+    { icon: "googlePay.svg", name: "GooglePay", url: upiData.gpayurl },
+    { icon: "otherUpi.svg", name: "Other UPI Apps", url: upiData.upi },
   ]);
   
   useEffect(() => {
@@ -221,7 +221,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
           <button onClick={() => setShowModal(true)}>Pay via UPI</button>
         </div>
         {/* Footer */}
-        <div className="payment-footer">powered by GSX Solutions</div>
+        <div className="payment-footer">Powered by GSX Solutions</div>
       </div>
 
       {/* Modal Section */}
@@ -282,7 +282,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
                 closeModal();
               }}
             >
-              Proceed to Pay
+              Continue
             </button>
             </div>
 
