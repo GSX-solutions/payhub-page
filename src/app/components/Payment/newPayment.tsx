@@ -41,12 +41,14 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
     paytmurl: decodeURIComponent(paytm),
     gpayurl: decodeURIComponent(gpay),
   };
+  console.log(upiData)
   const [paymentMethods, setPaymentMethods] = useState([
     { icon: "paytm.svg", name: "paytm", url: upiData.paytmurl, selected: false },
     { icon: "phonepe.svg", name: "phonepe", url: upiData.phonepeurl },
     { icon: "googlePay.svg", name: "googlePay", url: upiData.gpayurl },
     { icon: "otherUpi.svg", name: "otherUpi", url: upiData.upi },
   ]);
+  
   useEffect(() => {
     const setVh = () => {
       document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
@@ -273,7 +275,10 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
               <button
               className="proceed-button"
               onClick={() => {
+                if(window?.navigator?.platform == "iPhone")
                 window.location.replace(selectedUrl);
+                else
+                window.location.replace(upiData.upi);
                 closeModal();
               }}
             >
