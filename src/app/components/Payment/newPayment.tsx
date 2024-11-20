@@ -221,7 +221,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
           <button onClick={() => setShowModal(true)}>Pay via UPI</button>
         </div>
         {/* Footer */}
-        <div className="payment-footer">powered by PayHub</div>
+        <div className="payment-footer">powered by GSX Solutions</div>
       </div>
 
       {/* Modal Section */}
