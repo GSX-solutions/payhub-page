@@ -90,7 +90,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
     fetchPaymentStatus().then();
 
     // Set up interval to run the function every 15 seconds
-    const intervalId = setInterval(fetchPaymentStatus, 15000);
+    const intervalId = setInterval(fetchPaymentStatus, 1500);
 
     // Cleanup function to clear the interval when the component is unmounted
     return () => clearInterval(intervalId);
