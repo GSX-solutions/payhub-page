@@ -67,7 +67,11 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
     const fetchPaymentStatus = async () => {
       try {
         const response = await checkPaymentStatus(token, txId);
-        // console.log(response);
+         console.log(response);
+        if(response?.responseCode==400)
+        {
+          router.replace("/expired");
+        }
         if (response.responseData === "success") {
           if (redirect != null) {
             window.location.assign(redirect);
@@ -94,7 +98,12 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
 
   useEffect(() => {
     checkPageExpiry(token)
-      .then()
+      .then((response)=>{
+        if(response?.responseCode==400)
+        {
+          router.replace("/expired");
+        }
+      })
       .catch((error) => {
         console.log("error", error);
       });

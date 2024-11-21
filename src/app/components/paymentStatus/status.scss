@@ -80,3 +80,44 @@
     }
   }
   
+  .status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .status-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .status-success {
+    background-color: #28a745; /* Green */
+  }
+  
+  .status-failure {
+    background-color: #dc3545; /* Red */
+  }
+  
+  .status-expired {
+    background-color: #ffc107; /* Yellow */
+  }
+  
+  .status-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .status-message {
+    font-size: 16px;
+    color: #6c757d;
+  }
+  
