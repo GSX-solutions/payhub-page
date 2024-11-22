@@ -284,10 +284,10 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
               <button
               className="proceed-button"
               onClick={() => {
-                if(window?.navigator?.platform == "iPhone")
+                // if(window?.navigator?.platform == "iPhone")
                 window.location.replace(selectedUrl);
-                else
-                window.location.replace(upiData.upi);
+                // else
+                // window.location.replace(upiData.upi);
                 closeModal();
               }}
             >
