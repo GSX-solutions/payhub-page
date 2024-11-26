@@ -20,6 +20,12 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
   const urlParams = useSearchParams();
   const [remainingTime, setRemainingTime] = useState("");
   const [selectedUrl, setSelectedUrl] = useState("");
+  const [upiData, setUpiData] = useState({
+    paytmurl:"",
+    gpayurl:"",
+    phonepeurl:'',
+    upi:""
+  })
   const timer = useRef<NodeJS.Timeout>();
   const onEndRef = useRef(onEnd);
 
@@ -35,12 +41,12 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
   let amount = urlParams.get("amount") || 100;
   let redirect = urlParams.get("url");
 
-  const upiData = {
-    upi: decodeURIComponent(upi),
-    phonepeurl: decodeURIComponent(phonepe),
-    paytmurl: decodeURIComponent(paytm),
-    gpayurl: decodeURIComponent(gpay),
-  };
+  // const upiData = {
+  //   upi: decodeURIComponent(upi),
+  //   phonepeurl: decodeURIComponent(phonepe),
+  //   paytmurl: decodeURIComponent(paytm),
+  //   gpayurl: decodeURIComponent(gpay),
+  // };
   console.log(upiData)
   const [paymentMethods, setPaymentMethods] = useState([
     { icon: "paytm.svg", name: "PayTM", url: upiData.paytmurl, selected: false },
@@ -115,12 +121,18 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
       checkPaymentTime(token, txId)
         .then((response) => {
           if (response.responseCode !== 200) {
-            // Handle the case where responseCode is not 200
-            // navigate("/expired");
-            // return alert("Link Expired");
+           
+              router.replace("/expired");
+            
           }
 
-          const responseData = response.responseData;
+          const responseData = response?.responseData?.time;
+          setUpiData({
+            paytmurl:response?.responseData?.urls?.paytm,
+            upi:response?.responseData?.urls?.upi,
+            phonepeurl:response?.responseData?.urls?.phonepe,
+            gpayurl:response?.responseData?.urls?.gpay
+          })
           const transactionTime = moment.tz(responseData, "Asia/Kolkata");
 
           const currentTime = moment();
