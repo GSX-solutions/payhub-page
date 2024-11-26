@@ -26,6 +26,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
     phonepeurl:'',
     upi:""
   })
+  const [amount, setAmount] = useState(0)
   const timer = useRef<NodeJS.Timeout>();
   const onEndRef = useRef(onEnd);
 
@@ -38,7 +39,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
 
   const router = useRouter();
 
-  let amount = urlParams.get("amount") || 100;
+  // let amount = urlParams.get("amount") || 100;
   let redirect = urlParams.get("url");
 
   // const upiData = {
@@ -116,7 +117,10 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
   }, [token]);
 
   useEffect(() => {
-    if (!txId) return;
+    if (!txId) {
+      router.replace("/expired");
+      return
+    };
     const fetchData = () => {
       checkPaymentTime(token, txId)
         .then((response) => {
@@ -129,10 +133,11 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
           const responseData = response?.responseData?.time;
           setUpiData({
             paytmurl:response?.responseData?.urls?.paytm,
-            upi:response?.responseData?.urls?.upi,
+            upi:response?.responseData?.urls?.upiUrl,
             phonepeurl:response?.responseData?.urls?.phonepe,
             gpayurl:response?.responseData?.urls?.gpay
           })
+          setAmount(response?.responseData?.amount)
           const transactionTime = moment.tz(responseData, "Asia/Kolkata");
 
           const currentTime = moment();
