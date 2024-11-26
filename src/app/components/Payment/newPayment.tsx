@@ -55,6 +55,19 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
     { icon: "googlePay.svg", name: "GooglePay", url: upiData.gpayurl },
     { icon: "otherUpi.svg", name: "Other UPI Apps", url: upiData.upi },
   ]);
+
+  const updatePaymentMethods = () => {
+    setPaymentMethods([
+      { icon: "paytm.svg", name: "PayTM", url: upiData.paytmurl, selected: false },
+      { icon: "phonepe.svg", name: "PhonePE", url: upiData.phonepeurl },
+      { icon: "googlePay.svg", name: "GooglePay", url: upiData.gpayurl },
+      { icon: "otherUpi.svg", name: "Other UPI Apps", url: upiData.upi },
+    ]);
+  };
+
+  useEffect(() => {
+    updatePaymentMethods();
+  }, [upiData]);
   
   useEffect(() => {
     const setVh = () => {
