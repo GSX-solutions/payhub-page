@@ -1,0 +1,20 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: payhub-page
+  region: ap-south-1
+  version: "1.31"
+
+iam:
+  withOIDC: true
+  serviceRoleARN: arn:aws:iam::813300926344:role/EKSClusterRole
+
+nodeGroups:
+  - name: sqs-worker-nodes
+    instanceType: c5.large
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 10
+    iam:
+      instanceRoleARN: arn:aws:iam::813300926344:role/EC2SSMAccessRole

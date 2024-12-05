@@ -20,6 +20,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
   const urlParams = useSearchParams();
   const [remainingTime, setRemainingTime] = useState("");
   const [selectedUrl, setSelectedUrl] = useState("");
+  const [whitelabel, setWhitelabel] = useState(true)
   const [upiData, setUpiData] = useState({
     paytmurl:"",
     gpayurl:"",
@@ -144,6 +145,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
           }
 
           const responseData = response?.responseData?.time;
+          setWhitelabel(response?.responseData?.whitelabel)
           setUpiData({
             paytmurl:response?.responseData?.urls?.paytm,
             upi:response?.responseData?.urls?.upiUrl,
@@ -260,7 +262,7 @@ const NewPayment = ({ onEnd }: CountDownProps) => {
           <button onClick={() => setShowModal(true)}>Pay via UPI</button>
         </div>
         {/* Footer */}
-        <div className="payment-footer">Powered by GSX Solutions</div>
+       {!whitelabel&&<div className="payment-footer">Powered by GSX Solutions</div>}
       </div>
 
       {/* Modal Section */}

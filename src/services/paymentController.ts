@@ -65,7 +65,7 @@ export async function pinwalletPayin(details: any) {
 }
 
 export async function checkPageExpiry(token: string) {
-  return await fetch(`${apiUrl}/admin/verifypageexpirytoken`, {
+  return await fetch(`${apiUrl}/user/verifypageexpirytoken`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export async function checkPageExpiry(token: string) {
 }
 
 export async function checkPaymentTime(token: string, id: string) {
-  const response = await fetch(`${apiUrl}/admin/getTransactionTime`, {
+  const response = await fetch(`${apiUrl}/user/getTransactionTime`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -113,7 +113,7 @@ export async function checkPaymentTime(token: string, id: string) {
 }
 
 export async function checkPaymentStatus(token: string, id: string) {
-  return await fetch(`${apiUrl}/admin/getTransactionStatus`, {
+  return await fetch(`${apiUrl}/user/getTransactionStatus`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

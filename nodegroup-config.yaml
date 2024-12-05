@@ -1,0 +1,17 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: payhub-page
+  region: ap-south-1
+
+nodeGroups:
+  - name: standard-workers
+    instanceType: m5.large
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 4
+    privateNetworking: true
+    subnets:
+      - subnet-06e6ec999ae4a38a5
+      - subnet-0d024f04a5f7dee70
